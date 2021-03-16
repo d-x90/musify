@@ -1,0 +1,54 @@
+.player-container {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 3rem;
+
+  > .time-control {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+
+    > input[type='range'] {
+      width: 100%;
+      padding: 1rem 0;
+      cursor: pointer;
+    }
+
+    > p {
+      padding: 1rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 70%;
+      margin: auto;
+    }
+  }
+
+  > .play-control {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-size: 6.5rem;
+    transition: all 0.5s;
+
+    svg {
+      cursor: pointer;
+
+      &:active {
+        transform: scale(1.15);
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 70%;
+      margin: auto;
+      font-size: 5rem;
+    }
+  }
+}
