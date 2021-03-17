@@ -67,7 +67,7 @@ function App() {
       />
 
       <div className="footer">
-        <h3>Created by Dávid Horváth &copy; 2021</h3>
+        <h3 className="no-select">Created by Dávid Horváth &copy; 2021</h3>
       </div>
     </div>
   );
