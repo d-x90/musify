@@ -11,15 +11,44 @@
     width: 50%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 
-    > input[type='range'] {
-      width: 100%;
+    > .slider {
+      width: 80%;
       padding: 1rem 0;
       cursor: pointer;
+      margin: auto;
+
+      > .MuiSlider-rail {
+        color: rgba(black, 0.7);
+      }
+
+      > .MuiSlider-track {
+        color: black;
+      }
+
+      > .MuiSlider-thumb {
+        color: black;
+
+        &:hover {
+          box-shadow: 0 0 0 0.4rem rgba(black, 0.4);
+        }
+
+        &.Mui-focusVisible {
+          box-shadow: 0 0 0 0.8rem rgba(black, 0.4);
+        }
+      }
     }
 
     > p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      width: 10rem;
       padding: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
     }
 
     @media screen and (max-width: 900px) {

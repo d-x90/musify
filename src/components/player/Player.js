@@ -6,6 +6,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { Slider } from '@material-ui/core';
 import './Player.scss';
 
 const Player = ({
@@ -36,10 +37,10 @@ const Player = ({
       }
     };
 
-    document.addEventListener('keypress', shortcutListener);
+    document.addEventListener('keydown', shortcutListener);
 
     return () => {
-      document.removeEventListener('keypress', shortcutListener);
+      document.removeEventListener('keydown', shortcutListener);
     };
   }, [onPlayClicked]);
 
@@ -66,10 +67,14 @@ const Player = ({
       currentTime: e.target.currentTime,
       duration: e.target.duration,
     });
+
+    if (e.target.currentTime === e.target.duration) {
+      setTimeout(onSkipForwardClicked, 1000);
+    }
   };
 
-  const dragHandler = (e) => {
-    const targetTime = e.target.value;
+  const dragHandler = (event, newValue) => {
+    const targetTime = newValue;
     audioRef.current.currentTime = targetTime;
     setSongInfo({
       ...songInfo,
@@ -80,15 +85,17 @@ const Player = ({
   return (
     <div className="player-container">
       <div className="time-control">
-        <p>{getFormattedTime(songInfo.currentTime)}</p>
-        <input
-          type="range"
+        <p className="no-select">{getFormattedTime(songInfo.currentTime)}</p>
+        <Slider
+          className="slider"
           min={0}
           max={songInfo.duration || 0}
-          value={songInfo.currentTime}
+          scale={(x) => x}
+          value={songInfo.currentTime || 0}
           onChange={dragHandler}
+          color="secondary"
         />
-        <p>{getFormattedTime(songInfo.duration)}</p>
+        <p className="no-select">{getFormattedTime(songInfo.duration)}</p>
       </div>
 
       <div className="play-control">

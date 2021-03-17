@@ -10,10 +10,11 @@
     max-width: 40rem;
     border-radius: 50%;
     box-shadow: 0 0 0.7rem 0.01rem rgba(0, 0, 0, 0.384);
+    pointer-events: none;
 
     @media screen and (max-width: 900px) {
-      width: 50%;
-      margin: auto;
+      width: 60%;
+      margin: 0 auto;
     }
   }
 

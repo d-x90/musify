@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
 import Player from './components/player/Player';
+import SongLibrary from './components/song-library/SongLibrary';
 import Song from './components/song/Song';
 import { fetchSongs } from './services/song-api';
 
@@ -8,6 +9,7 @@ function App() {
   const [songs, setSongs] = useState([]);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState('');
 
   useEffect(() => {
     fetchSongs().then((songsArray) => {
@@ -15,9 +17,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const degree = Math.random() * 100 + 'deg';
+    setBackgroundColor(
+      `linear-gradient(${degree}, ${songs[currentSongIndex]?.colors?.[0]} 0%, ${songs[currentSongIndex]?.colors?.[1]} 100%`,
+    );
+  }, [songs, currentSongIndex]);
+
   const skipBackwardHandler = () => {
     setCurrentSongIndex(
-      currentSongIndex - 1 < 0 ? songs.length : currentSongIndex - 1,
+      currentSongIndex - 1 < 0 ? songs.length - 1 : currentSongIndex - 1,
     );
   };
 
@@ -30,8 +39,24 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Musify</h1>
+    <div
+      className="App"
+      style={{
+        backgroundImage: backgroundColor,
+      }}
+    >
+      <div className="header">
+        <h1 className="no-select">Musify</h1>
+        <SongLibrary
+          songs={songs}
+          activeSongId={songs?.[currentSongIndex]?.id}
+          onSongSelected={(songId) => {
+            setCurrentSongIndex(songs.findIndex((s) => s.id === songId));
+            setIsPlaying(true);
+          }}
+        />
+      </div>
+
       <Song song={songs[currentSongIndex]} isPlaying={isPlaying} />
       <Player
         isPlaying={isPlaying}
@@ -40,6 +65,10 @@ function App() {
         onPlayClicked={playHandler}
         onSkipForwardClicked={skipForwardHandler}
       />
+
+      <div className="footer">
+        <h3>Created by Dávid Horváth &copy; 2021</h3>
+      </div>
     </div>
   );
 }
