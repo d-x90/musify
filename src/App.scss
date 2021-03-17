@@ -12,6 +12,19 @@
     color: initial;
   }
 
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h2,
+  h3 {
+    color: rgb(19, 19, 19);
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -27,18 +40,17 @@
   }
 
   .footer {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    flex: 1 1 2rem;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
 
     > h3 {
       font-weight: normal;
       font-family: 'Poppins', sans-serif;
       font-size: 1.8rem;
+      margin: 0 1rem 0.5rem 0;
 
       @media screen and (max-height: 600px) {
         font-size: 1.2rem;
@@ -48,18 +60,5 @@
         font-size: 0.8rem;
       }
     }
-  }
-
-  h2 {
-    font-size: 2.4rem;
-  }
-
-  h3 {
-    font-size: 1.8rem;
-  }
-
-  h2,
-  h3 {
-    color: rgb(19, 19, 19);
   }
 }

@@ -10,11 +10,16 @@ html {
   font-size: 62.5%;
   font-family: 'Akaya Telivigala';
   overscroll-behavior: none;
+
+  height: -webkit-fill-available;
 }
 
 body {
   height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
   width: 100vw;
+
   background: rgba($color: wheat, $alpha: 0.25);
   background-size: cover;
   background-position: center;
