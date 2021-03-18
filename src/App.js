@@ -6,12 +6,14 @@ import Player from './components/player/Player';
 import SongLibrary from './components/song-library/SongLibrary';
 import Song from './components/song/Song';
 import { fetchSongs } from './services/song-api';
+import Nav from './components/nav/Nav';
 
 function App() {
   const [songs, setSongs] = useState([]);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState('');
+  const [isLibraryClosed, setIsLibraryClosed] = useState(true);
 
   useEffect(() => {
     fetchSongs().then((songsArray) => {
@@ -36,10 +38,6 @@ function App() {
     setCurrentSongIndex((currentSongIndex + 1) % songs.length);
   };
 
-  const playHandler = () => {
-    setIsPlaying(!isPlaying);
-  };
-
   return (
     <div
       className="App"
@@ -47,24 +45,27 @@ function App() {
         backgroundImage: backgroundColor,
       }}
     >
-      <div className="header">
-        <h1 className="no-select">Musify</h1>
-        <SongLibrary
-          songs={songs}
-          activeSongId={songs?.[currentSongIndex]?.id}
-          onSongSelected={(songId) => {
-            setCurrentSongIndex(songs.findIndex((s) => s.id === songId));
-            setIsPlaying(true);
-          }}
-        />
-      </div>
+      <Nav
+        isLibraryClosed={isLibraryClosed}
+        openLibrary={() => setIsLibraryClosed(false)}
+      ></Nav>
+      <SongLibrary
+        isClosed={isLibraryClosed}
+        closeLibrary={() => setIsLibraryClosed(true)}
+        songs={songs}
+        activeSongId={songs?.[currentSongIndex]?.id}
+        onSongSelected={(songId) => {
+          setCurrentSongIndex(songs.findIndex((s) => s.id === songId));
+          setIsPlaying(true);
+        }}
+      />
 
       <Song song={songs[currentSongIndex]} isPlaying={isPlaying} />
       <Player
         isPlaying={isPlaying}
         song={songs[currentSongIndex]}
         onSkipBackwardClicked={skipBackwardHandler}
-        onPlayClicked={playHandler}
+        onPlayClicked={() => setIsPlaying(!isPlaying)}
         onSkipForwardClicked={skipForwardHandler}
       />
 

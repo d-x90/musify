@@ -1,91 +1,65 @@
-button[library-button] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 1;
-  transition: opacity 0.3s;
-
-  color: black;
-  font-size: 3rem;
-  font-family: 'Poppins';
-  padding: 0 0.5rem;
-  margin: 1.5rem 2rem;
-  text-transform: capitalize;
-  border: 3px solid black;
-
-  @media screen and (max-width: 600px) {
-    &.visible {
-      font-size: 2.5rem;
-    }
-  }
-
-  &.invisible {
-    opacity: 0;
-  }
-
-  &.visible {
-    opacity: 1;
-  }
-}
-
-.library-overlay-container {
+.song-library {
   overflow: hidden;
-  z-index: 1;
   position: absolute;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100vw;
+  width: 40rem;
+  background-color: white;
+  box-shadow: 0 0 4px 0 black;
+
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  z-index: 1;
+  transition: all 0.5s ease;
+
+  &.closed {
+    transform: translateX(-100%);
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 100vw;
+    transition: all 0.3s ease;
+  }
+
+  > .library-header {
+    flex-basis: 7rem;
+    flex-grow: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    font-size: 3rem;
+
+    > h2 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    > svg {
+      cursor: pointer;
+    }
+  }
+
+  > .library-song-container {
+    overflow: auto;
+    flex-grow: 1;
+    > * {
+      padding: 2rem;
+    }
+  }
+}
+
+.library-drop-shadow {
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(black, 0.4);
+  cursor: pointer;
 
   &.closed {
     display: none;
-  }
-
-  > .song-library {
-    overflow: hidden;
-    flex-basis: 40rem;
-    flex-shrink: 0;
-    background-color: white;
-    box-shadow: 0 0 4px 0 black;
-
-    display: flex;
-    flex-direction: column;
-
-    @media screen and (max-width: 900px) {
-      flex-basis: 100vw;
-    }
-
-    > .library-header {
-      flex-basis: 7rem;
-      flex-grow: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 2rem;
-      font-size: 3rem;
-
-      > h2 {
-        font-family: 'Poppins', sans-serif;
-      }
-
-      > svg {
-        cursor: pointer;
-      }
-    }
-
-    > .library-song-container {
-      overflow: auto;
-      flex-grow: 1;
-      > * {
-        padding: 2rem;
-      }
-    }
-  }
-
-  > .drop-shadow {
-    flex-grow: 1;
-    background-color: rgba(black, 0.4);
-    cursor: pointer;
   }
 }

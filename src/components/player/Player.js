@@ -46,7 +46,7 @@ const Player = ({
 
   useEffect(() => {
     if (isPlaying && song?.audioSource) {
-      audioRef.current.play();
+      audioRef.current.play().catch((ignored) => console.debug('play error'));
     } else {
       audioRef.current.pause();
     }
