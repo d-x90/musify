@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useEffect, useState } from 'react';
 import './App.scss';
 import Player from './components/player/Player';
@@ -68,6 +70,16 @@ function App() {
 
       <div className="footer">
         <h3 className="no-select">Created by Dávid Horváth &copy; 2021</h3>
+        <a
+          href="https://www.linkedin.com/in/d-x90/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a>
+        <a href="https://github.com/d-x90/" target="_blank" rel="noreferrer">
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
       </div>
     </div>
   );

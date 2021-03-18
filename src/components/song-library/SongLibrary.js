@@ -41,7 +41,6 @@ const SongLibrary = ({ songs, activeSongId, onSongSelected }) => {
                 key={song.id}
                 active={song.id === activeSongId}
                 onClick={() => {
-                  setClosed(true);
                   onSongSelected(song.id);
                 }}
               />
