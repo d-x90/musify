@@ -65,6 +65,10 @@ button[library-button] {
       padding: 2rem;
       font-size: 3rem;
 
+      > h2 {
+        font-family: 'Poppins', sans-serif;
+      }
+
       > svg {
         cursor: pointer;
       }
