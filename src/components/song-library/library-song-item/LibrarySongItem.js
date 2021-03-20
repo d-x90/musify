@@ -1,10 +1,11 @@
 import React from 'react';
 import './LibrarySongItem.scss';
+import PropTypes from 'prop-types';
 
-const LibrarySongItem = ({ song, active, onClick }) => {
+const LibrarySongItem = ({ song, isActive, onClick }) => {
   return (
     <div
-      className={`library-song-item ${active && 'active'}`}
+      className={`library-song-item ${isActive && 'active'}`}
       onClick={onClick}
     >
       <img className="no-select" src={song?.coverImage} alt={song?.name} />
@@ -14,6 +15,12 @@ const LibrarySongItem = ({ song, active, onClick }) => {
       </div>
     </div>
   );
+};
+
+LibrarySongItem.propTypes = {
+  song: PropTypes.object.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default LibrarySongItem;

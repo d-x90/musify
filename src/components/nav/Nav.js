@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import './Nav.scss';
+import PropTypes from 'prop-types';
 
 const Nav = ({ isLibraryClosed, openLibrary }) => {
   return (
@@ -16,6 +17,11 @@ const Nav = ({ isLibraryClosed, openLibrary }) => {
       </Button>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  isLibraryClosed: PropTypes.bool.isRequired,
+  openLibrary: PropTypes.func.isRequired,
 };
 
 export default Nav;

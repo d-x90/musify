@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Slider } from '@material-ui/core';
 import './Player.scss';
+import PropTypes from 'prop-types';
 
 const Player = ({
   isPlaying,
@@ -123,6 +124,14 @@ const Player = ({
       </div>
     </div>
   );
+};
+
+Player.propTypes = {
+  isPlaying: PropTypes.bool.isRequired,
+  song: PropTypes.object,
+  onSkipBackwardClicked: PropTypes.func.isRequired,
+  onPlayClicked: PropTypes.func.isRequired,
+  onSkipForwardClicked: PropTypes.func.isRequired,
 };
 
 export default Player;

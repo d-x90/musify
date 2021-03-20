@@ -3,6 +3,7 @@ import LibrarySongItem from './library-song-item/LibrarySongItem';
 import './SongLibrary.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 
 const SongLibrary = ({
   songs,
@@ -39,7 +40,7 @@ const SongLibrary = ({
             <LibrarySongItem
               song={song}
               key={song.id}
-              active={song.id === activeSongId}
+              isActive={song.id === activeSongId}
               onClick={() => {
                 onSongSelected(song.id);
               }}
@@ -53,6 +54,14 @@ const SongLibrary = ({
       ></div>
     </>
   );
+};
+
+SongLibrary.propTypes = {
+  songs: PropTypes.array.isRequired,
+  activeSongId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onSongSelected: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool.isRequired,
+  closeLibrary: PropTypes.func.isRequired,
 };
 
 export default SongLibrary;
