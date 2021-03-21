@@ -26,15 +26,17 @@ const Player = ({
   useEffect(() => {
     const shortcutListener = (e) => {
       switch (e.code) {
-        case 'Space':
         case 'KeyK':
           onPlayClicked();
           break;
         case 'KeyL':
-          //TODO
+          onSkipForwardClicked();
+          break;
+        case 'KeyJ':
+          onSkipBackwardClicked();
           break;
         default:
-          console.log(e);
+        // None
       }
     };
 
@@ -43,7 +45,7 @@ const Player = ({
     return () => {
       document.removeEventListener('keydown', shortcutListener);
     };
-  }, [onPlayClicked]);
+  }, [onPlayClicked, onSkipBackwardClicked, onSkipForwardClicked]);
 
   useEffect(() => {
     if (isPlaying && song?.audioSource) {
@@ -101,19 +103,25 @@ const Player = ({
 
       <div className="play-control">
         <FontAwesomeIcon
+          tabIndex="2"
           className="skip-back-btn"
           icon={faAngleLeft}
           onClick={onSkipBackwardClicked}
+          onKeyDown={(e) => e.code === 'Space' && onSkipBackwardClicked()}
         />
         <FontAwesomeIcon
+          tabIndex="3"
           className="play-btn"
           onClick={onPlayClicked}
+          onKeyDown={(e) => e.code === 'Space' && onPlayClicked()}
           icon={isPlaying && song ? faPause : faPlay}
         />
         <FontAwesomeIcon
+          tabIndex="4"
           className="skip-forward-btn"
           icon={faAngleRight}
           onClick={onSkipForwardClicked}
+          onKeyDown={(e) => e.code === 'Space' && onSkipForwardClicked()}
         />
         <audio
           ref={audioRef}

@@ -19,7 +19,7 @@ const SongLibrary = ({
           closeLibrary();
           break;
         default:
-          console.log(e);
+        //NONE
       }
     };
 

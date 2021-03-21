@@ -8,6 +8,7 @@ const Nav = ({ isLibraryClosed, openLibrary }) => {
     <nav className="main-nav">
       <h1>Musify</h1>
       <Button
+        tabIndex="1"
         className={`library-button ${
           isLibraryClosed ? 'visible' : 'invisible'
         }`}
