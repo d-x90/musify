@@ -107,13 +107,18 @@ const Player = ({
           className="skip-back-btn"
           icon={faAngleLeft}
           onClick={onSkipBackwardClicked}
-          onKeyDown={(e) => e.code === 'Space' && onSkipBackwardClicked()}
+          onKeyDown={(e) =>
+            ['Space', 'Enter'].some((v) => v === e.code) &&
+            onSkipBackwardClicked()
+          }
         />
         <FontAwesomeIcon
           tabIndex="3"
           className="play-btn"
           onClick={onPlayClicked}
-          onKeyDown={(e) => e.code === 'Space' && onPlayClicked()}
+          onKeyDown={(e) =>
+            ['Space', 'Enter'].some((v) => v === e.code) && onPlayClicked()
+          }
           icon={isPlaying && song ? faPause : faPlay}
         />
         <FontAwesomeIcon
@@ -121,7 +126,10 @@ const Player = ({
           className="skip-forward-btn"
           icon={faAngleRight}
           onClick={onSkipForwardClicked}
-          onKeyDown={(e) => e.code === 'Space' && onSkipForwardClicked()}
+          onKeyDown={(e) =>
+            ['Space', 'Enter'].some((v) => v === e.code) &&
+            onSkipForwardClicked()
+          }
         />
         <audio
           ref={audioRef}

@@ -29,13 +29,17 @@ function App() {
   }, [songs, currentSongIndex]);
 
   const skipBackwardHandler = () => {
-    setCurrentSongIndex(
-      currentSongIndex - 1 < 0 ? songs.length - 1 : currentSongIndex - 1,
+    setCurrentSongIndex((prevCurrentSongIndex) =>
+      prevCurrentSongIndex - 1 < 0
+        ? songs.length - 1
+        : prevCurrentSongIndex - 1,
     );
   };
 
   const skipForwardHandler = () => {
-    setCurrentSongIndex((currentSongIndex + 1) % songs.length);
+    setCurrentSongIndex(
+      (prevCurrentSongIndex) => (prevCurrentSongIndex + 1) % songs.length,
+    );
   };
 
   return (
@@ -65,7 +69,7 @@ function App() {
         isPlaying={isPlaying}
         song={songs[currentSongIndex]}
         onSkipBackwardClicked={skipBackwardHandler}
-        onPlayClicked={() => setIsPlaying(!isPlaying)}
+        onPlayClicked={() => setIsPlaying((prevIsPlaying) => !prevIsPlaying)}
         onSkipForwardClicked={skipForwardHandler}
       />
 
