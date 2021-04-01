@@ -48,6 +48,10 @@
     margin-bottom: 1rem;
     margin-right: 1rem;
 
+    @media screen and (max-height: 400px) {
+      margin-bottom: 0.1rem;
+    }
+
     > h3,
     a {
       font-weight: normal;

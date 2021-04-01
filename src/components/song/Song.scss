@@ -11,11 +11,6 @@
     border-radius: 50%;
     box-shadow: 0 0 0.7rem 0.01rem rgba(0, 0, 0, 0.384);
     pointer-events: none;
-
-    @media screen and (max-width: 900px) {
-      width: 60%;
-      margin: 0 auto;
-    }
   }
 
   > h2 {
@@ -24,5 +19,34 @@
 
   > h3 {
     padding: 1rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    img {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+
+  @media screen and (max-height: 700px) {
+    height: 50vh;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    img {
+      order: 1;
+      width: 20%;
+      margin: 0 3rem;
+    }
+
+    h2 {
+      order: 0;
+      padding: 0;
+    }
+
+    h3 {
+      order: 2;
+    }
   }
 }
