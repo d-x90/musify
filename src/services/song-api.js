@@ -1,14 +1,5 @@
 const mockSongs = [
   {
-    name: 'ebb//flo',
-    coverImage:
-      'https://i.scdn.co/image/23d4bb38261aec7428f6b621a0db1a2b6ce35e9d',
-    audioSource: ' https://mp3.chillhop.com/serve.php/?mp3=8741',
-    artist: ['invention_'],
-    colors: ['#05909D', '#8E5D72'],
-    id: 8741,
-  },
-  {
     name: 'Mt. Elsewhere',
     coverImage:
       'https://i.scdn.co/image/ab67616d0000b273be62e4b7069a919936646728',
@@ -16,6 +7,15 @@ const mockSongs = [
     artist: ['Mama Aiuto'],
     colors: ['#2C9F97', '#B33C46'],
     id: 12141,
+  },
+  {
+    name: 'ebb//flo',
+    coverImage:
+      'https://i.scdn.co/image/23d4bb38261aec7428f6b621a0db1a2b6ce35e9d',
+    audioSource: ' https://mp3.chillhop.com/serve.php/?mp3=8741',
+    artist: ['invention_'],
+    colors: ['#05909D', '#8E5D72'],
+    id: 8741,
   },
   {
     name: 'Beyond Clouds',
